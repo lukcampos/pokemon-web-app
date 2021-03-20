@@ -1,0 +1,16 @@
+<mat-card class="poke-card">
+  <mat-card-header>
+    <div [class]="isLoading?'loading':''" mat-card-avatar class="poke-header-image" [style.backgroundImage]="'url('+(card.set && card.set.images && card.set.images.symbol ?card.set.images.symbol:'') +')'"></div>
+
+    <mat-card-title [class]="isLoading?'loading':''">{{card.name}}</mat-card-title>
+    <mat-card-subtitle [class]="isLoading?'loading':''">{{card.id}}</mat-card-subtitle>
+  </mat-card-header>
+  <div id="imgCard" [class]="isLoading?'loading':''">
+    <img mat-card-image [defaultImage]="card.images && card.images.small ?card.images.small:''" [errorImage]="card.images && card.images.small ?card.images.small:''" [lazyLoad]="card.images && card.images.large ?card.images.large:''">
+  </div>
+  <mat-card-content>
+    <mat-chip-list aria-label="Types">
+      <mat-chip [class]="isLoading?'loading':''" *ngFor="let type of card.types">{{type}}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>

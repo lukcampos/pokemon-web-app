@@ -1,14 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CardListComponent } from './card-list.component';
-
+import { TranslateModule ,TranslateService,TranslateStore} from '@ngx-translate/core';
 describe('CardListComponent', () => {
   let component: CardListComponent;
   let fixture: ComponentFixture<CardListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardListComponent ]
+      declarations: [ CardListComponent ],
+      imports: [
+        HttpClientTestingModule,
+        TranslateModule.forRoot()
+      ],
+      providers:[
+        TranslateService,
+        TranslateStore
+      ]
     })
     .compileComponents();
   });

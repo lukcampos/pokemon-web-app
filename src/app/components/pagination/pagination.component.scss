@@ -1,0 +1,78 @@
+#paginationFlex {
+  margin: auto;
+  text-align: center;
+  display: flex;
+
+  ul {
+    list-style: none;
+    float: left;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    margin: auto;
+
+    li {
+      float: left;
+      position: relative;
+
+      a {
+        color: #5186ec;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      cursor: pointer;
+
+      &.active {
+        a {
+          color: #000;
+        }
+      }
+
+      &.first {
+        height: 40px;
+        width: 149px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../assets/images/pokem.svg");
+      }
+
+      &.o {
+        height: 41px;
+        width: 34px;
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-image: url("../../../assets/images/oo.svg");
+        background-position: bottom;
+
+        &.active {
+          background-image: url("../../../assets/images/o.svg");
+        }
+      }
+
+      &.last {
+        background-position: bottom;
+        height: 41px;
+        width: 28px;
+        background-size: 26px;
+        background-repeat: no-repeat;
+        background-image: url("../../../assets/images/n.svg");
+        background-position: bottom;
+      }
+
+      .pageIndex {
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        bottom: -36px;
+        position: absolute;
+        width: 100%;
+        font-size: 20px;
+        font-weight: bold;
+        left: 0;
+      }
+    }
+    list-style: none;
+  }
+}

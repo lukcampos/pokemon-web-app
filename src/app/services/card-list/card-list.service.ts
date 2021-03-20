@@ -11,10 +11,18 @@ export class CardListService {
 
   constructor(private http: HttpClient) { }
 
-  public async list(pageSize?: number): Promise<Array<Card>> {
+  public async list(name?: string, page?: number): Promise<CardList> {
+    console.log('name', name)
+    var url = `${this.url}/cards?pageSize=12&page=${page}`
+    if (name && !this.isEmpty(name)) {
+      url = `${url}&q=name:${name}`
+    }
 
-    return this.http.get<CardList>(`${this.url}/cards?pageSize=9&page=1`)
+    return this.http.get<CardList>(url)
       .toPromise()
-      .then(doc => doc.data)
+  }
+
+  isEmpty(str: string) {
+    return (!str || 0 === str.length);
   }
 }

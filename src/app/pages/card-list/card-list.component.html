@@ -1,52 +1,52 @@
-<div class="container">
+<div class="container" [hidden]='isDesktopDevice?true:false'>
   <div class="row">
-    <div class="col-md-12">
-      <header>
-        <ul>
-          <li><a class="links" href="#user"><button class="signbutton" type="button">Sign in</button></a></li>
-          <li><a href="#grid"><img class="grid" src="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-11-512.png" title="Google apps"></a></li>
-          <li><a href="#images">Images</a></li>
-          <li><a href="#gmail">Gmail</a></li>
-        </ul>
-      </header>
+    <div class="col-md-4 offset-md-4">
       <div class="logo">
-        <img alt="Google" src="/assets/images/pokemoon.svg">
-      </div>
-      <div class="bar">
-        <input class="searchbar" type="text" title="Search">
-        <a href="#"> <img class="voice" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/716px-Google_mic.svg.png" title="Search by Voice"></a>
-      </div>
-      <div class="buttons">
-        <button class="button" type="button">{{'POKEMON_SEARCH_BUTTON' | translate}}</button>
-        <button class="button" type="button">I'm Feeling Lucky</button>
+        <img src="/assets/images/pokemoon.svg" alt="Pokemoon logo">
       </div>
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="bar">
+        <input class="searchbar" id="searchbar" type="text" title="Search" (keyup.enter)=" getCards(0)" #searchbarMobile>
+      </div>
+    </div>
+  </div>
+  <ngb-carousel *ngIf="cards && cards.length >0" [showNavigationArrows]="true">
+    <ng-template ngbSlide *ngFor="let card of cards">
+      <app-card-box [card]="card" [isLoading]="card.loading?card.loading:false">
+      </app-card-box>
+    </ng-template>
+  </ngb-carousel>
 </div>
 
-<div class="container">
+<div class="container" [hidden]='isDesktopDevice?false:true'>
   <div class="row">
-    <div class="col-md-3" *ngFor="let card of cards">
-      <mat-card class="poke-card">
-        <mat-card-header>
-          <div mat-card-avatar class="poke-header-image" [style.backgroundImage]="'url('+(card.set && card.set.images && card.set.images.symbol ?card.set.images.symbol:'') +')'"></div>
-
-          <mat-card-title>{{card.name}}</mat-card-title>
-          <mat-card-subtitle>{{card.id}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="card.images && card.images.large ?card.images.large:''">
-        <mat-card-content>
-          <mat-chip-list aria-label="Fish selection">
-            <mat-chip *ngFor="let type of card.types">{{type}}</mat-chip>
-          </mat-chip-list>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-      </mat-card>
+    <div class="col-md-4 offset-md-4">
+      <div class="logo">
+        <img src="/assets/images/pokemoon.svg" alt="Pokemoon logo">
+      </div>
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="bar">
+        <input class="searchbar" id="searchbar" type="text" title="Search" (keyup.enter)=" getCards(0)" #searchbarDesktop>
+      </div>
+      <div class="buttons">
+        <button class="button" type="button" (click)="getCards(0)">{{'POKEMON_SEARCH_BUTTON' | translate}}</button>
+        <button class="button" type="button">{{'POKEMON_LUCKY_BUTTON' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let card of cards">
+      <app-card-box [card]="card" [isLoading]="card.loading?card.loading:false">
+      </app-card-box>
+    </div>
+  </div>
+  <app-pagination [currentPage]="currentPage" [totalCount]="totalCount" (pageChanged)="getCards($event.page)">
+  </app-pagination>
 </div>

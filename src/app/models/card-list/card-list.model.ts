@@ -1,4 +1,4 @@
-import { Card} from "../card/card.model"
+import { Card } from "../card/card.model"
 
 export interface CardList {
   data: Array<Card>;

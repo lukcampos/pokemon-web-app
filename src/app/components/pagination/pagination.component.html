@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" id="paginationFlex">
+      <ul>
+        <li class="first"></li>
+        <ng-container *ngFor="let page of fakeArray;">
+          <li *ngIf="getRoundNumber() >= page"class="o" [class]="currentPage==page?'active':''" (click)="changePage(page)">
+            <a class="pageIndex">
+              {{page}}
+            </a>
+          </li>
+        </ng-container>
+        <li class="last"></li>
+      </ul>
+    </div>
+  </div>
+</div>

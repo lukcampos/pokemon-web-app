@@ -2,7 +2,7 @@ export interface Card {
   id?: string;
   name?: string;
   supertype?: string;
-  subtypes?: Array<Subtype>;
+  subtypes?: Array<Subtype | string>;
   level?: string;
   hp?: string;
   types?: Array<Type>;
@@ -20,44 +20,45 @@ export interface Card {
   legalities?: SetLegality;
   set?: Set;
   images: CardImage;
-  tcgplayer?: Tcgplayer
+  tcgplayer?: Tcgplayer,
+  loading?:boolean;
 }
 
 export interface Abilitie {
-  name: string;
-  text: string;
-  type: Type;
+  name?: string;
+  text?: string;
+  type?: Type;
 }
 
 export interface Attack {
-  name: string;
-  cost: string;
-  convertedEnergyCost: number;
-  damage: string;
-  text: string;
+  name?: string;
+  cost?: string;
+  convertedEnergyCost?: number;
+  damage?: string;
+  text?: string;
 }
 
 export interface weakness {
-  type: string;
-  value: string;
+  type?: string;
+  value?: string;
 }
 
 export interface resistance {
-  type: string;
-  value: string;
+  type?: string;
+  value?: string;
 }
 
 export interface Set {
-  id: string;
-  name: string;
-  series: string;
-  printedTotal: number;
-  total: number;
-  legalities: SetLegality;
-  images: SetImage;
-  ptcgoCode: string;
-  releaseDate: string;
-  updatedAt: string;
+  id?: string;
+  name?: string;
+  series?: string;
+  printedTotal?: number;
+  total?: number;
+  legalities?: SetLegality;
+  images?: SetImage;
+  ptcgoCode?: string;
+  releaseDate?: string;
+  updatedAt?: string;
 
 
 }
@@ -69,37 +70,37 @@ export enum Legality {
 
 
 export interface SetImage {
-  symbol: string;
-  logo: string;
+  symbol?: string;
+  logo?: string;
 }
 
 export interface SetLegality {
-  expanded: Legality | undefined
-  standard: Legality | undefined
-  unlimited: Legality | undefined
+  expanded?: Legality | undefined
+  standard?: Legality | undefined
+  unlimited?: Legality | undefined
 }
 
 export interface CardImage {
-  small: string;
-  large: string;
+  small?: string;
+  large?: string;
 }
 
 export interface Tcgplayer {
-  url: string;
-  updatedAt: string;
-  prices: {
-    normal: Price | undefined;
-    holofoil: Price | undefined;
-    reverseHolofoil: Price | undefined;
+  url?: string;
+  updatedAt?: string;
+  prices?: {
+    normal?: Price | undefined;
+    holofoil?: Price | undefined;
+    reverseHolofoil?: Price | undefined;
   }
 }
 
 export interface Price {
-  low: number | null
-  mid: number | null
-  high: number | null
-  market: number | null
-  directLow: number | null
+  low?: number | null
+  mid?: number | null
+  high?: number | null
+  market?: number | null
+  directLow?: number | null
 }
 
 export enum Type {
