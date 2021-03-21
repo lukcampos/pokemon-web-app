@@ -2,7 +2,7 @@ import { ViewChild, Component, OnInit, ElementRef } from '@angular/core';
 import { CardListService } from '../../services/card-list/card-list.service'
 import { Card } from '../../models/card/card.model'
 import { mock } from './data/mock'
-import { wait } from '../../helpers/wait'
+import { wait } from '../../helpers/index'
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({

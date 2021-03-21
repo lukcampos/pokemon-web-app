@@ -1,3 +1,6 @@
+export interface CardResponse {
+  data: Card
+}
 export interface Card {
   id?: string;
   name?: string;
@@ -21,7 +24,7 @@ export interface Card {
   set?: Set;
   images: CardImage;
   tcgplayer?: Tcgplayer,
-  loading?:boolean;
+  loading?: boolean;
 }
 
 export interface Abilitie {

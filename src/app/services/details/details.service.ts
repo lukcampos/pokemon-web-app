@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { CardList } from '../../models/card-list/card-list.model';
+import { CardResponse } from '../../models/card/card.model';
 import { isEmpty } from '../../helpers';
 @Injectable({
   providedIn: 'root'
 })
-export class CardListService {
+export class DetailsService {
   private url: string = `${environment.api_url}/${environment.api_version}`;
 
   constructor(private http: HttpClient) { }
 
-  public async list(name?: string, page?: number): Promise<CardList> {
-    var url = `${this.url}/cards?pageSize=12&page=${page}&orderBy=name`
-    if (name && !isEmpty(name)) {
-      url = `${url}&q=name:${name}`
-    }
-    return this.http.get<CardList>(url)
+  /**
+   *
+    @param  id {string} the card id that you want to check
+  A function that get card infos by ID
+   */
+  public async getById(id: string): Promise<CardResponse> {
+
+    return this.http.get<CardResponse>(`${this.url}/cards/${id}`)
       .toPromise()
+      .then((res)=>res)
   }
 
 

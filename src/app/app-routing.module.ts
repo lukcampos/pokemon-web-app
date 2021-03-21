@@ -10,6 +10,14 @@ const routes: Routes = [
       name: 'card-list',
     }
   },
+  {
+    path: ':cardID',
+    loadChildren: () => import('./pages/details/details.module')
+      .then(m => m.DetailsModule),
+    data: {
+      name: 'card-list',
+    }
+  },
 ];
 
 @NgModule({
