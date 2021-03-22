@@ -8,7 +8,7 @@
 </mat-toolbar>
 <div class="container" [hidden]='isDesktopDevice?true:false'>
   <div class="row">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-md-4 offset-md-4 col-8 offset-2">
       <div class="logo">
         <img src="/assets/images/pokemoon.svg" alt="Pokemoon logo">
       </div>
@@ -29,7 +29,6 @@
     </ng-template>
   </ngb-carousel>
 </div>
-
 <div class="container" [hidden]='isDesktopDevice?false:true'>
   <div class="row">
     <div class="col-md-4 offset-md-4">
@@ -54,9 +53,8 @@
       </app-card-box>
     </div>
     <div class="col-md-6 offset-md-3 notFoundresults" *ngIf="cards.length<=0">
-      <h2>Nenhum resultado encontrado</h2>
+      <h2>{{'NO_RESULT_FOUND'|translate}}</h2>
       <img src="./assets/images/sad_pikachu.png" alt="Pikachu image">
-
     </div>
   </div>
   <app-pagination *ngIf="cards.length>0" [currentPage]="currentPage" [totalCount]="totalCount" (pageChanged)="getCards($event.page)">

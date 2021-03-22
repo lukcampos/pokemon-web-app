@@ -83,64 +83,11 @@
   color: #808080;
 }
 
-.button:focus {
-  border: 1px solid #4885ed;
-  padding: 9px 19px;
-}
-
-nav {
-  /* push the nav to the bottom of the flex container */
-  margin: auto auto initial;
-  padding: 1rem;
-  /* style text */
-  font-size: 3.5rem;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  text-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
-  /* set custom properties for the different letters and their colors */
-  --g: #4285f4;
-  --e: #ea4335;
-  --o: #fbbc05;
-  --l: #34a853;
-  /* custom property for the current page */
-  --current: #ea4335;
-  /* display the child elements of the navigation in a row */
-  display: grid;
-  grid-auto-flow: column;
-}
-
-nav a {
-  /* remove the default underline */
-  text-decoration: none;
-  /* display the span elements nested in the anchor links in a column */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-nav a span:last-of-type {
-  /* style the numbers describing the pages */
-  color: #168691;
-  font-weight: initial;
-  font-size: 1rem;
-}
-
-nav a:hover span:last-of-type {
-  /* on hover show an underline below the number describing the pages */
-  text-decoration: underline;
-}
-
-nav a.current {
-  /* remove the cursor from the anchor link referring to the current page */
-  cursor: initial;
-}
-
-nav a.current span:last-of-type {
-  /* style the number describing the page with a black color and no underline
-  ! given the higher specificity the underline is not shown on hover
-  */
-  color: initial;
-  text-decoration: none;
+.button {
+  &:focus {
+    border: 1px solid #4885ed;
+    padding: 9px 19px;
+  }
 }
 
 .carousel-cell {
