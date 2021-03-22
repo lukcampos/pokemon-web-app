@@ -62,7 +62,16 @@
             <div mat-subheader>{{'ATTACKS_NAME'| translate}}</div>
             <mat-list-item *ngFor="let attack  of card.attacks ">
               <mat-icon mat-list-icon>bolt</mat-icon>
-              <div mat-line><a (click)="openDetailsModal(attack)">{{attack.name}}</a></div>
+              <div mat-line>
+                <a (click)="openDetailsModal(attack)">
+                  {{attack.name}}
+                </a>
+                <a (click)="openDetailsModal(attack)">
+                  <button mat-icon-button disabled aria-label=" icon button with a open in new tab icon" id="open_in_new">
+                    <mat-icon>open_in_new</mat-icon>
+                  </button>
+                </a>
+              </div>
               <div mat-line>{{'DAMAGE_NAME' | translate}} {{attack.damage}} </div>
             </mat-list-item>
             <mat-divider></mat-divider>
