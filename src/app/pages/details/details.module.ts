@@ -11,8 +11,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { CustomLoader, GetLang } from '../../translations/index';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
 @NgModule({
-  declarations: [DetailsComponent],
+  declarations: [DetailsComponent, ModalComponent],
   imports: [
     CommonModule,
     DetailsRoutingModule,
@@ -21,6 +23,7 @@ import { CustomLoader, GetLang } from '../../translations/index';
     MatListModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
     TranslateModule.forRoot(),
     TranslateModule.forChild({
       defaultLanguage: GetLang(),

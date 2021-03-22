@@ -7,5 +7,11 @@ export var English = {
   WEAKNESSES_NAME: 'Weaknesses',
   RESISTANCE_NAME: 'Resistances',
   TYPES_NAME: 'Types',
-  NAME_NAME: 'Name'
+  NAME_NAME: 'Name',
+  MANA_COST: `"Mana" cost`,
+  DAMAGE_NAME_UPPER: 'Damage',
+  DESCRIPTION_NAME: "Description",
+  CARD_NOT_FOUND: 'Card not found',
+  SERVER_ERROR: 'We are having problems with the server, please check back later.',
+  NO_RESULT_FOUND: "No results found"
 }

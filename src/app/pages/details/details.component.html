@@ -1,13 +1,13 @@
 <mat-toolbar>
   <div class="container">
-    <a routerLink="/">
+    <a routerLink="/" id="smallLogo">
       <img src="./assets/images/pokemoon.svg" class="pokemoonLogo" alt="Pokemoon Logo">
     </a>
-    <button mat-icon-button class="shareIcon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
+    <ul class="translations">
+      <li (click)="setLang('pt')">Portugues</li>
+      <li (click)="setLang('en')">English</li>
+    </ul>
   </div>
-
 </mat-toolbar>
 
 
@@ -24,49 +24,57 @@
     <div class="row">
       <div class="col-md-12">
         <h1>{{card.name}}</h1>
-
-
-
-
-
         <mat-list>
-          <div mat-subheader>{{'NAME_NAME'| translate}}</div>
-          <mat-list-item *ngFor="let type  of card.types ">
-            <mat-icon mat-list-icon>badge</mat-icon>
-            <div mat-line>{{card.name}}</div>
-          </mat-list-item>
-          <div mat-subheader>{{'IDENTIFICATION_NUMBER'| translate}}</div>
-          <mat-list-item *ngFor="let type  of card.types ">
-            <mat-icon mat-list-icon>perm_identity</mat-icon>
-            <div mat-line>{{card.id}}</div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <div mat-subheader>{{'TYPES_NAME'| translate}}</div>
-          <mat-list-item *ngFor="let type  of card.types ">
-            <mat-icon mat-list-icon>border_clear</mat-icon>
-            <div mat-line>{{type}}</div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <div mat-subheader>{{'RESISTANCE_NAME'| translate}}</div>
-          <mat-list-item *ngFor="let resistance  of card.resistances ">
-            <mat-icon mat-list-icon>thumb_up_alt</mat-icon>
-            <div mat-line>{{resistance.type}}</div>
-            <div mat-line>{{resistance.value}} </div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <div mat-subheader>{{'ATTACKS_NAME'| translate}}</div>
-          <mat-list-item *ngFor="let attack  of card.attacks ">
-            <mat-icon mat-list-icon>bolt</mat-icon>
-            <div mat-line>{{attack.name}}</div>
-            <div mat-line>{{'DAMAGE_NAME' | translate}} {{attack.damage}} </div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <div mat-subheader>{{'WEAKNESSES_NAME' | translate}}</div>
-          <mat-list-item *ngFor="let weakness of card.weaknesses">
-            <mat-icon mat-list-icon>thumb_down_alt</mat-icon>
-            <div mat-line>{{weakness.type}}</div>
-            <div mat-line> {{weakness.value}} </div>
-          </mat-list-item>
+          <ng-container *ngIf="card && card.name">
+            <div mat-subheader>{{'NAME_NAME'| translate}}</div>
+            <mat-list-item>
+              <mat-icon mat-list-icon>badge</mat-icon>
+              <div mat-line>{{card.name}}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+          <ng-container *ngIf="card && card.id">
+            <div mat-subheader>{{'IDENTIFICATION_NUMBER'| translate}}</div>
+            <mat-list-item>
+              <mat-icon mat-list-icon>perm_identity</mat-icon>
+              <div mat-line>{{card.id}}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+          <ng-container *ngIf="card && card.types && card.types.length>0">
+            <div mat-subheader>{{'TYPES_NAME'| translate}}</div>
+            <mat-list-item *ngFor="let type  of card.types ">
+              <mat-icon mat-list-icon>border_clear</mat-icon>
+              <div mat-line>{{type}}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+          <ng-container *ngIf="card && card.resistances && card.resistances.length>0">
+            <div mat-subheader>{{'RESISTANCE_NAME'| translate}}</div>
+            <mat-list-item *ngFor="let resistance  of card.resistances">
+              <mat-icon mat-list-icon>thumb_up_alt</mat-icon>
+              <div mat-line>{{resistance.type}}</div>
+              <div mat-line>{{resistance.value}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+          <ng-container *ngIf="card && card.attacks && card.attacks.length>0">
+            <div mat-subheader>{{'ATTACKS_NAME'| translate}}</div>
+            <mat-list-item *ngFor="let attack  of card.attacks ">
+              <mat-icon mat-list-icon>bolt</mat-icon>
+              <div mat-line><a (click)="openDetailsModal(attack)">{{attack.name}}</a></div>
+              <div mat-line>{{'DAMAGE_NAME' | translate}} {{attack.damage}} </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+          <ng-container *ngIf="card && card.weaknesses && card.weaknesses.length >0">
+            <div mat-subheader>{{'WEAKNESSES_NAME' | translate}}</div>
+            <mat-list-item *ngFor="let weakness of card.weaknesses">
+              <mat-icon mat-list-icon>thumb_down_alt</mat-icon>
+              <div mat-line>{{weakness.type}}</div>
+              <div mat-line> {{weakness.value}} </div>
+            </mat-list-item>
+          </ng-container>
         </mat-list>
       </div>
     </div>

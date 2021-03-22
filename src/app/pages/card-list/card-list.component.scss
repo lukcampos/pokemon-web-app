@@ -2,34 +2,6 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-ul {
-  list-style-type: none;
-  overflow: hidden;
-}
-
-li {
-  float: right;
-}
-
-li a {
-  color: #000;
-  display: block;
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-li a:hover {
-  text-decoration: underline;
-}
-
-.grid {
-  height: 23px;
-  position: relative;
-  bottom: 4px;
-}
-
 .signbutton {
   background-color: #4885ed;
   color: #fff;
@@ -61,15 +33,23 @@ li a:hover {
   border-radius: 30px;
   border: 1px solid #dcdcdc;
   overflow: hidden;
-}
+  position: relative;
+  margin-bottom: 20px;
 
-.bar:hover {
-  box-shadow: 1px 1px 8px 1px #dcdcdc;
-}
+  mat-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
 
-.bar:focus-within {
-  box-shadow: 1px 1px 8px 1px #dcdcdc;
-  outline: none;
+  &:hover {
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+  }
+
+  &:focus-within {
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    outline: none;
+  }
 }
 
 .searchbar {
@@ -79,13 +59,6 @@ li a:hover {
   font-size: 16px;
   outline: none;
   padding-left: 20px;
-}
-
-.voice {
-  height: 20px;
-  position: relative;
-  top: 5px;
-  left: 10px;
 }
 
 .buttons {
@@ -205,5 +178,15 @@ nav a.current span:last-of-type {
 }
 
 ngb-carousel {
-  max-height: calc(100vh - 162px);
+  max-height: calc(100vh - 250px);
+}
+
+.notFoundresults {
+  h2 {
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+  }
 }

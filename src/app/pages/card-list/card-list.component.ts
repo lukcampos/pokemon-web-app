@@ -5,6 +5,9 @@ import { mock } from './data/mock'
 import { wait } from '../../helpers/index'
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
+import { SetLang } from '../../translations/set-lang.function'
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
@@ -22,6 +25,7 @@ export class CardListComponent implements OnInit {
     private cardListService: CardListService,
     private deviceService: DeviceDetectorService,
     private config: NgbCarouselConfig,
+    private translate: TranslateService
   ) {
     config.interval = 0;
     config.wrap = false;
@@ -30,7 +34,6 @@ export class CardListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCards();
-    // this.sweetAlert2LoaderService.swal({olar})
   }
 
   /**
@@ -48,12 +51,10 @@ export class CardListComponent implements OnInit {
       await wait(300);
       const payload = await this.cardListService.list(name, page);
       this.cards = payload.data;
-      // this.searchbarMobile.nativeElement.value = "";
-      // this.searchbarDesktop.nativeElement.value = "";
       this.currentPage = Number(payload.page);
       this.totalCount = payload.totalCount;
     } catch (err) {
-
+      Swal.fire('Oops...', err, 'error')
     }
   }
 
@@ -65,6 +66,15 @@ export class CardListComponent implements OnInit {
     for (var _i = 0; _i < 12; _i++) {
       this.cards.push(mock);
     }
+  }
+
+
+  /**
+   *  A function to change language
+   */
+  setLang(lang: string) {
+    SetLang(lang)
+    this.translate.setDefaultLang(lang)
   }
 
 }

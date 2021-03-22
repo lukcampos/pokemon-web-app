@@ -1,35 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DetailsComponent } from './details.component';
+import { ModalComponent } from './modal.component';
+import { MatDialogModule, MAT_DIALOG_DATA , MatDialogRef} from '@angular/material/dialog';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DetailsInterceptor } from './details.interceptor';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DetailsRoutingModule } from './details.routing';
-import { DetailsService } from '../../services/details/details.service';
+import { DetailsRoutingModule } from '../details.routing';
+import { DetailsService } from '../../../services/details/details.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { CustomLoader, GetLang } from '../../translations/index';
-import { MatDialogModule } from '@angular/material/dialog';
-import { ModalComponent } from './modal/modal.component';
-import { ActivatedRoute } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
-describe('DetailsComponent', () => {
-  let component: DetailsComponent;
-  let fixture: ComponentFixture<DetailsComponent>;
+import { CustomLoader, GetLang } from '../../../translations/index';
 
-  const fakeActivatedRoute = {
-    snapshot: { data: {} }
-  } as ActivatedRoute;
+
+describe('ModalComponent', () => {
+  let component: ModalComponent;
+  let fixture: ComponentFixture<ModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DetailsComponent],
+      declarations: [ModalComponent],
       imports: [
-        CommonModule,
         DetailsRoutingModule,
         HttpClientModule,
         MatToolbarModule,
@@ -37,7 +29,6 @@ describe('DetailsComponent', () => {
         MatButtonModule,
         MatIconModule,
         MatDialogModule,
-        RouterTestingModule,
         TranslateModule.forRoot(),
         TranslateModule.forChild({
           defaultLanguage: GetLang(),
@@ -47,24 +38,14 @@ describe('DetailsComponent', () => {
           },
         }),
       ],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            snapshot: {
-              params: {
-                cardID: '12345'
-              }
-            }
-          }
-        }
-      ]
+      providers: [{ provide: MAT_DIALOG_DATA, useValue: {} },
+      { provide: MatDialogRef, useValue: {} }]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailsComponent);
+    fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

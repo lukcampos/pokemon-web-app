@@ -1,3 +1,11 @@
+<mat-toolbar>
+  <div class="container">
+    <ul class="translations">
+      <li (click)="setLang('pt')">Portugues</li>
+      <li (click)="setLang('en')">English</li>
+    </ul>
+  </div>
+</mat-toolbar>
 <div class="container" [hidden]='isDesktopDevice?true:false'>
   <div class="row">
     <div class="col-md-4 offset-md-4">
@@ -9,7 +17,8 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="bar">
-        <input class="searchbar" id="searchbar" type="text" title="Search" (keyup.enter)=" getCards(0)" #searchbarMobile>
+        <input class="searchbar" id="searchbarMobile" type="text" title="Search" (keyup.enter)=" getCards(0)" #searchbarMobile>
+        <mat-icon mat-mini-fab aria-hidden="false" (click)="getCards(0)" aria-label="Seach icon" [color]="'warn'">search</mat-icon>
       </div>
     </div>
   </div>
@@ -32,12 +41,10 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="bar">
-        <input class="searchbar" id="searchbar" type="text" title="Search" (keyup.enter)=" getCards(0)" #searchbarDesktop>
+        <input class="searchbar" id="searchbarDesktop" type="text" title="Search" (keyup.enter)=" getCards(0)" #searchbarDesktop>
       </div>
       <div class="buttons">
         <button class="button" type="button" (click)="getCards(0)">{{'POKEMON_SEARCH_BUTTON' | translate}}</button>
-        <button class="button" type="button">{{'POKEMON_LUCKY_BUTTON' | translate}}
-        </button>
       </div>
     </div>
   </div>
@@ -46,7 +53,12 @@
       <app-card-box [card]="card" [isLoading]="card.loading?card.loading:false">
       </app-card-box>
     </div>
+    <div class="col-md-6 offset-md-3 notFoundresults" *ngIf="cards.length<=0">
+      <h2>Nenhum resultado encontrado</h2>
+      <img src="./assets/images/sad_pikachu.png" alt="Pikachu image">
+
+    </div>
   </div>
-  <app-pagination [currentPage]="currentPage" [totalCount]="totalCount" (pageChanged)="getCards($event.page)">
+  <app-pagination *ngIf="cards.length>0" [currentPage]="currentPage" [totalCount]="totalCount" (pageChanged)="getCards($event.page)">
   </app-pagination>
 </div>

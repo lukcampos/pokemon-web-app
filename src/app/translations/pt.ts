@@ -7,5 +7,11 @@ export var Portuguese = {
   WEAKNESSES_NAME: 'Fraquesas',
   RESISTANCE_NAME: 'Resistências',
   TYPES_NAME: 'Tipos',
-  NAME_NAME: 'Nome'
+  NAME_NAME: 'Nome',
+  MANA_COST: `Custo de “mana”`,
+  DAMAGE_NAME_UPPER: 'Dano',
+  DESCRIPTION_NAME: "Descrição",
+  CARD_NOT_FOUND: 'Card não encontrado',
+  SERVER_ERROR: 'Estamos tendo problemas no servidor, por favor, volte mais tarde.',
+  NO_RESULT_FOUND: "Nenhum resultado encontrado"
 }

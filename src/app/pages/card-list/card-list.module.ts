@@ -10,6 +10,8 @@ import { CardlistInterceptor } from './cardlist.interceptor';
 import { CardBoxModule } from '../../components/card-box/card-box.module';
 import { PaginationModule } from '../../components/pagination/pagination.module';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap'
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     CardListComponent
@@ -28,7 +30,9 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap'
       },
     }),
     CardBoxModule,
-    PaginationModule
+    MatIconModule,
+    PaginationModule,
+    MatToolbarModule
   ],
   providers: [
     CardListService,

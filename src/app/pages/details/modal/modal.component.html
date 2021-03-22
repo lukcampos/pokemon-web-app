@@ -1,0 +1,31 @@
+<button mat-icon-button class="closeBTN" (click)="closeBtn()">
+  <mat-icon>cancel</mat-icon>
+</button>
+
+<mat-list>
+  <div mat-subheader>{{'NAME_NAME'| translate}}</div>
+  <mat-list-item>
+    <mat-icon mat-list-icon>badge</mat-icon>
+    <div mat-line>{{data.name}}</div>
+  </mat-list-item>
+  <div mat-subheader>{{'MANA_COST'| translate}}</div>
+  <mat-list-item *ngFor="let cost of data.cost">
+    <mat-icon mat-list-icon>price_check</mat-icon>
+    <div mat-line>{{cost}}</div>
+  </mat-list-item>
+  <div mat-subheader>{{'MANA_COST'| translate}}</div>
+  <mat-list-item *ngFor="let cost of data.cost">
+    <mat-icon mat-list-icon>price_check</mat-icon>
+    <div mat-line>{{cost}}</div>
+  </mat-list-item>
+  <div mat-subheader>{{'DAMAGE_NAME_UPPER'| translate}}</div>
+  <mat-list-item>
+    <mat-icon mat-list-icon>dangerous</mat-icon>
+    <div mat-line>{{data.damage}}</div>
+  </mat-list-item>
+  <div mat-subheader>{{'DESCRIPTION_NAME'| translate}}</div>
+  <mat-list-item>
+    <mat-icon mat-list-icon>description</mat-icon>
+    <div mat-line>{{data.text}}</div>
+  </mat-list-item>
+</mat-list>
