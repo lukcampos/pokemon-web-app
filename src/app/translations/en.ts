@@ -13,5 +13,7 @@ export var English = {
   DESCRIPTION_NAME: "Description",
   CARD_NOT_FOUND: 'Card not found',
   SERVER_ERROR: 'We are having problems with the server, please check back later.',
-  NO_RESULT_FOUND: "No results found"
+  NO_RESULT_FOUND: "No results found",
+  EN_LANG: "English",
+  PT_LANG: "Portuguese"
 }
